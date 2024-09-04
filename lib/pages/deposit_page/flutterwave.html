@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${widget.data["title"] ?? "Payment"}</title>
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+</head>
+<body>
+<h2 style="text-align:center;">Please wait, initializing payment...</h2>
+<script>
+    function makePayment(tx_ref, amount, currency, public_key, payment_options) {
+        FlutterwaveCheckout({
+            public_key: public_key,
+            tx_ref: tx_ref,
+            amount: amount,
+            currency: currency,
+            payment_options: payment_options,
+            callback: function (data) {
+                console.log("Payment callback:", data);
+                window.stop();
+                messageHandler.postMessage(JSON.stringify(data));
+            },
+            onclose: function () {
+                console.log("Payment closed.");
+                messageHandler.postMessage(JSON.stringify({ status: "cancelled" }));
+            },
+            customizations: {
+                title: "${widget.data["title"] ?? "Payment"}",
+            }
+        });
+    }
+    // Initiate payment
+    document.addEventListener('DOMContentLoaded', function() {
+        makePayment("${widget.data["tx_ref"]}", "${widget.data["amount"]}", "${widget.data["currency"]}", "${widget.data["public_key"]}", "${widget.data["payment_options"]}");
+    });
+</script>
+</body>
+</html>
