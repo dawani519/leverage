@@ -1,0 +1,76 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": ["venv", ".git", "firebase-debug.log", "firebase-debug.*.log", "*.local"]
+    },
+    {
+      "source": "leverageapp",
+      "codebase": "leverageapp"
+    }
+  ],
+  "hosting": {
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "emulators": {
+    "auth": {
+      "port": 9099
+    },
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "database": {
+      "port": 9000
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "storage": {
+      "port": 9199
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  },
+  "remoteconfig": {},
+  "extensions": {},
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "leverage-eaf34",
+          "appId": "1:868669942579:android:79f2adb593cf68ba01ec46",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "leverage-eaf34",
+          "configurations": {
+            "android": "1:868669942579:android:79f2adb593cf68ba01ec46",
+            "ios": "1:868669942579:ios:19cbca6b6153663201ec46",
+            "macos": "1:868669942579:ios:19cbca6b6153663201ec46",
+            "web": "1:868669942579:web:287f6a31f9bc692701ec46",
+            "windows": "1:868669942579:web:5bdd48bd7c2dba8401ec46"
+          }
+        }
+      }
+    }
+  }
+}

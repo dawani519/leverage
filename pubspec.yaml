@@ -38,21 +38,39 @@ dependencies:
   google_nav_bar: ^5.0.6
   shared_preferences: ^2.0.13
   dash_chat_2: ^0.0.20
-  google_fonts: ^4.0.4
+  google_fonts: ^6.2.1
   delightful_toast: ^1.1.0
-  get_it: ^7.6.7
+  get_it: ^8.0.3
   image_picker: ^1.0.7
   path: ^1.9.0
   flutter_switch_dark_light: ^0.0.1
-  flutterwave_standard: ^1.0.4
-  http: ^0.13.5
+  http: ^1.2.2
   font_awesome_flutter: ^10.6.0
   platform: ^3.0.0
-  loading_overlay: ^0.3.0
-  webview_flutter: ^3.0.4
+  loading_overlay: ^0.4.2
+  webview_flutter: ^4.7.0
   flutterwave_standard_smart: ^1.0.1
   flutter_inappwebview: ^6.0.0
   fluttertoast: ^8.2.8
+  uuid: ^4.5.0
+  flutter_paystack_plus: ^2.1.0
+  pay_with_paystack: ^1.0.10
+  firebase_core: ^3.4.1
+  cloud_firestore: ^5.4.1
+  firebase_auth: ^5.2.1
+  firebase_analytics: ^11.3.1
+  firebase_messaging: ^15.1.1
+  firebase_crashlytics: ^4.1.1
+  wave: ^0.2.2
+  animated_text_kit: ^4.2.2
+  firebase_storage: ^12.3.1
+  carousel_slider: ^5.0.0
+  flutter_chatflow: ^2.0.0
+  file_picker: ^8.1.2
+  nigerian_states_and_lga: ^1.0.0
+  intl: ^0.19.0
+  url_launcher: ^6.3.1
+
 
 
 dev_dependencies:
@@ -64,13 +82,18 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See thats file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
+
+
+  assets:
+    - assets/images/IMG-20241031-WA0006.jpg
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

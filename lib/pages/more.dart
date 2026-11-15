@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:leverage/pages/more/profile_page.dart';
 import 'package:leverage/pages/more/support_page.dart';
 import 'package:leverage/pages/more/faq_page.dart';
-import 'package:leverage/pages/more/security_page.dart';
 import 'package:leverage/pages/more/settings_page.dart';
 import 'package:leverage/pages/more/about_us_page.dart';
 import 'package:leverage/pages/more/privacy_policy_page.dart';
 import 'package:leverage/pages/more/terms_of_service_page.dart';
+import 'package:leverage/pages/more/transactions_page.dart';
+import 'package:leverage/login_page.dart'; // Assuming the login page is here
 
 class MorePage extends StatelessWidget {
   const MorePage({super.key});
@@ -14,14 +15,15 @@ class MorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('More'),
-      ),
+      backgroundColor: const Color(0xFFF2F7FA),
       body: ListView(
         children: [
           ListTile(
-            leading: const Icon(Icons.person),
-            title: const Text('Profile'),
+            leading: const Icon(Icons.person, color: Color(0xFF2F4170)),
+            title: const Text(
+              'Profile',
+              style: TextStyle(color: Color(0xFF2F4170)),
+            ),
             onTap: () {
               Navigator.push(
                 context,
@@ -29,20 +31,25 @@ class MorePage extends StatelessWidget {
               );
             },
           ),
-
           ListTile(
-            leading: const Icon(Icons.security),
-            title: const Text('Security'),
+            leading: const Icon(Icons.wallet_rounded, color: Color(0xFF2F4170)),
+            title: const Text(
+              'Transactions',
+              style: TextStyle(color: Color(0xFF2F4170)),
+            ),
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const SecurityPage()),
+                MaterialPageRoute(builder: (context) => const TransactionsPage()),
               );
             },
           ),
           ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Settings'),
+            leading: const Icon(Icons.settings, color: Color(0xFF2F4170)),
+            title: const Text(
+              'Settings',
+              style: TextStyle(color: Color(0xFF2F4170)),
+            ),
             onTap: () {
               Navigator.push(
                 context,
@@ -51,8 +58,11 @@ class MorePage extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.help),
-            title: const Text('FAQ'),
+            leading: const Icon(Icons.help, color: Color(0xFF2F4170)),
+            title: const Text(
+              'FAQ',
+              style: TextStyle(color: Color(0xFF2F4170)),
+            ),
             onTap: () {
               Navigator.push(
                 context,
@@ -61,8 +71,11 @@ class MorePage extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.support),
-            title: const Text('Support'),
+            leading: const Icon(Icons.support, color: Color(0xFF2F4170)),
+            title: const Text(
+              'Support',
+              style: TextStyle(color: Color(0xFF2F4170)),
+            ),
             onTap: () {
               Navigator.push(
                 context,
@@ -71,8 +84,11 @@ class MorePage extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.info),
-            title: const Text('About Us'),
+            leading: const Icon(Icons.info, color: Color(0xFF2F4170)),
+            title: const Text(
+              'About Us',
+              style: TextStyle(color: Color(0xFF2F4170)),
+            ),
             onTap: () {
               Navigator.push(
                 context,
@@ -81,8 +97,11 @@ class MorePage extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.privacy_tip),
-            title: const Text('Privacy Policy'),
+            leading: const Icon(Icons.privacy_tip, color: Color(0xFF2F4170)),
+            title: const Text(
+              'Privacy Policy',
+              style: TextStyle(color: Color(0xFF2F4170)),
+            ),
             onTap: () {
               Navigator.push(
                 context,
@@ -91,8 +110,11 @@ class MorePage extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.document_scanner),
-            title: const Text('Terms of Service'),
+            leading: const Icon(Icons.document_scanner, color: Color(0xFF2F4170)),
+            title: const Text(
+              'Terms of Service',
+              style: TextStyle(color: Color(0xFF2F4170)),
+            ),
             onTap: () {
               Navigator.push(
                 context,
@@ -101,14 +123,47 @@ class MorePage extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.logout),
-            title: const Text('Logout'),
+            leading: const Icon(Icons.logout, color: Colors.red),
+            title: const Text(
+              'Logout',
+              style: TextStyle(color: Colors.red),
+            ),
             onTap: () {
-              // Handle logout logic here
+              _showLogoutDialog(context);
             },
           ),
         ],
       ),
+    );
+  }
+
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Logout'),
+          content: const Text('Are you sure you want to logout?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                // Navigate to the login page
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                      (Route<dynamic> route) => false, // Clear the navigation stack
+                );
+              },
+              child: const Text('Logout'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
